@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Roman
   Date: 09.05.2018
@@ -11,6 +11,31 @@
     <title>List users</title>
 </head>
 <body>
+<div>
+    <h1>List of users</h1>
+</div>
 
+<div>
+    <div>
+        <div>
+            <h2>Users</h2>
+        </div>
+        <%
+            List<String> names = (List<String>) request.getAttribute("userNames");
+
+            if (names != null && !names.isEmpty()) {
+                out.println("<ui>");
+                for (String s : names) {
+                    out.println("<li>" + s + "</li>");
+                }
+                out.println("</ui>");
+            } else out.println("<p>No registered users!</p>");
+        %>
+    </div>
+</div>
+
+<div>
+    <button onclick="location.href='/'">Exit</button>
+</div>
 </body>
 </html>
